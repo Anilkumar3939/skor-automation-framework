@@ -1,0 +1,6 @@
+18:08:58 [ERROR] FAIL: Some splash elements are missing
+18:09:01 [INFO] PASS: user_settings exists
+18:09:01 [INFO] PASS: device_details exists
+18:09:01 [INFO] PASS: location_details exists
+18:09:01 [ERROR] FAIL: Product mapping missing
+18:09:01 [ERROR] FAIL: Expected ONBOARDING, got: None

@@ -1,0 +1,11 @@
+# ─── Mobile Automation ────────────────────────────────────────────────────────
+uiautomator2>=3.0.0          # direct Android automation (no Appium server needed)
+
+# ─── Database ─────────────────────────────────────────────────────────────────
+psycopg2-binary>=2.9.0       # PostgreSQL driver (binary wheel = no build tools needed)
+
+# ─── Test Framework ───────────────────────────────────────────────────────────
+pytest>=7.4.0                # test collection + runner (alternative to run_tests.py)
+
+# ─── Reporting ────────────────────────────────────────────────────────────────
+allure-pytest>=2.13.0        # Allure report generation via pytest

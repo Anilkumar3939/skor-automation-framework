@@ -1,0 +1,10 @@
+# Ignore Allure test results and reports
+allure-report/
+allure-results/
+
+# Ignore standard Node.js dependencies (if applicable)
+node_modules/
+
+# Ignore OS files
+Thumbs.db
+.DS_Store

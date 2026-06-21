@@ -1,0 +1,5 @@
+14:10:43 [INFO] PASS: Already on RegisterLogin screen
+14:10:44 [INFO] PASS: Registration screen loaded
+14:10:47 [INFO] PASS: Proceed disabled for empty phone
+14:11:00 [INFO] PASS: Referral section visible
+14:11:03 [INFO] PASS: Flow executed (kept original behavior)

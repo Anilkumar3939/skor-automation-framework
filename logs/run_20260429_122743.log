@@ -1,0 +1,4 @@
+12:28:07 [INFO] PASS: OTP screen loaded after valid phone entry
+12:29:04 [ERROR] FAIL: No error shown for wrong OTP — check screenshot 03b
+12:29:46 [ERROR] FAIL: Left OTP screen without entering any OTP (unexpected)
+12:30:40 [ERROR] FAIL: Resend Code link not found — check screenshot 05a

@@ -1,0 +1,5 @@
+11:42:32 [INFO] PASS: Dashboard screen loaded successfully
+11:42:56 [ERROR] FAIL: Bottom nav not found or has fewer than 2 identifiable tabs (1)
+11:42:56 [INFO] PASS: Credit card widget is visible on dashboard
+11:43:22 [ERROR] FAIL: Profile page not loaded after tapping Profile tab
+11:43:24 [INFO] PASS: Notification icon visible on dashboard

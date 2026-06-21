@@ -1,0 +1,16 @@
+13:11:08 [INFO] PASS: Already on RegisterLogin screen
+13:11:09 [INFO] PASS: Registration screen loaded
+13:11:13 [INFO] PASS: Continue disabled for empty phone
+13:11:24 [INFO] PASS: Zero prefix blocked
+13:11:35 [INFO] PASS: Short phone blocked
+13:11:38 [INFO] PASS: Referral section visible
+13:11:52 [INFO] PASS: Flow executed (kept original behavior)
+13:12:23 [INFO] PASS: Valid invitation code accepted
+13:12:45 [ERROR] FAIL: OTP screen not reached
+13:12:58 [INFO] PASS: Campaign exists with utm_source referral
+13:12:58 [INFO] PASS: user_settings entry exists
+13:12:58 [ERROR] FAIL: Referral campaign missing
+13:12:58 [INFO] PASS: device_details entry exists
+13:12:59 [INFO] PASS: location_details entry exists
+13:12:59 [INFO] PASS: ADJUST appsflyer entry exists
+13:12:59 [INFO] PASS: FIREBASE appsflyer entry exists

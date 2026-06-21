@@ -1,0 +1,18 @@
+14:45:51 [INFO] PASS: Page title 'See your limit in 2 minutes!' visible
+14:45:59 [ERROR] FAIL: Page description not found
+14:46:11 [ERROR] FAIL: Submit button not found
+14:46:58 [INFO] PASS: Full Name field visible
+14:46:58 [INFO] PASS: NIK field visible
+14:46:58 [INFO] PASS: Monthly Income field visible
+14:47:44 [INFO] PASS: Submit button correctly disabled with no input
+14:48:19 [INFO] PASS: T&C checkbox is unchecked on fresh form (state=None)
+14:48:48 [INFO] PASS: Terms of Use page opened from T&C link
+14:49:10 [INFO] PASS: Returned to onboarding form after back from T&C
+14:49:36 [ERROR] FAIL: Digit found in 'John2 Doe!'
+14:49:36 [ERROR] FAIL: Special char found in 'John2 Doe!'
+14:50:53 [INFO] PASS: Full Name validation message shown: 'Please enter your full name as stated on your KTP'
+14:51:20 [INFO] PASS: Non-numeric chars blocked — NIK contains: '32012345'
+14:51:47 [INFO] PASS: Leading zero blocked in NIK field (got: '123456789012345')
+14:53:03 [INFO] PASS: NIK validation message shown: 'NIK has to be 16 digits'
+14:53:29 [INFO] PASS: Income field contains value: '5.000.000'
+14:54:15 [INFO] PASS: Submit button is ENABLED with valid full name, NIK, income and T&C checked

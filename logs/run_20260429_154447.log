@@ -1,0 +1,11 @@
+15:44:47 [INFO] PASS: Onboarding page title visible
+15:44:52 [INFO] PASS: T&C checkbox not checked initially (state=False)
+15:44:56 [INFO] PASS: T&C page title visible
+15:45:01 [INFO] PASS: Returned to onboarding page after back
+15:45:03 [INFO] PASS: Stayed on onboarding after tapping setup with no input
+15:45:04 [ERROR] FAIL: Unexpected full name placeholder: ''
+15:45:04 [ERROR] FAIL: Unexpected NIK placeholder: ''
+15:45:04 [ERROR] FAIL: Unexpected income placeholder: ''
+15:45:18 [ERROR] FAIL: Full name validation message not displayed
+15:45:32 [ERROR] FAIL: NIK validation message not displayed for short input
+15:45:34 [INFO] PASS: Non-numeric char blocked. Field contains: '3123'

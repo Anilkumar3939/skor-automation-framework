@@ -1,0 +1,4 @@
+15:10:46 [INFO] PASS: Already on RegisterLogin screen
+15:10:47 [INFO] PASS: Registration screen loaded
+15:10:51 [INFO] PASS: Continue disabled for empty phone
+15:11:02 [INFO] PASS: Zero prefix blocked

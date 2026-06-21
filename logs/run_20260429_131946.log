@@ -1,0 +1,4 @@
+13:19:58 [INFO] PASS: OTP screen loaded after valid phone entry
+13:20:10 [ERROR] FAIL: Success toast not found — SMS may be delayed
+13:20:32 [INFO] PASS: Resend Code link is visible
+13:23:40 [INFO] PASS: Error message shown for wrong OTP

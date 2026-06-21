@@ -1,0 +1,13 @@
+18:58:52 [INFO] PASS: OTP screen loaded after valid phone entry
+18:58:55 [ERROR] FAIL: Success toast not captured — it may have disappeared too fast
+18:59:02 [INFO] PASS: Phone number (ending 7337) displayed on OTP screen
+18:59:14 [INFO] PASS: 'Haven't received code' helper text is visible
+18:59:34 [ERROR] FAIL: Neither timer nor enabled Resend found
+18:59:41 [INFO] PASS: Resend Code link is visible
+18:59:51 [INFO] PASS: Non-numeric input correctly rejected — stayed on OTP screen
+19:00:04 [INFO] PASS: Partial OTP (3 digits) correctly ignored — no auto-submit
+19:00:13 [INFO] PASS: Stayed on OTP screen — empty OTP correctly blocked
+19:00:50 [ERROR] FAIL: No error shown for wrong OTP
+19:01:05 [INFO] PASS: App handled 8-digit input gracefully (6 accepted, extras ignored)
+19:03:13 [ERROR] FAIL: No error after 3 wrong OTP attempts — potential security issue
+19:08:25 [INFO] PASS: App handled rapid resend taps without crashing

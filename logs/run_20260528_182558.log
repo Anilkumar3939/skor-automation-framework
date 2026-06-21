@@ -1,0 +1,3 @@
+18:25:58 [INFO] PASS: Referral section visible
+18:26:12 [INFO] PASS: Flow executed (kept original behavior)
+18:26:15 [ERROR] FAIL: Continue not enabled

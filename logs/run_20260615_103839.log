@@ -1,0 +1,7 @@
+10:38:40 [INFO] PASS: Verify Email page is visible
+10:38:41 [INFO] PASS: Google button presence checked (found=True)
+10:38:43 [INFO] PASS: Manual email presence checked (found=True)
+10:38:53 [INFO] PASS: Navigated to Email input screen
+10:39:03 [INFO] PASS: Navigated to verification code screen
+10:40:24 [INFO] PASS: Navigated to Welcome screen after OTP verification
+10:40:35 [ERROR] FAIL: Did NOT navigate to office information screen after clicking Continue application

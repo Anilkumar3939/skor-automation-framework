@@ -1,0 +1,6 @@
+11:58:07 [INFO] PASS: Verify Email page is visible
+11:58:08 [INFO] PASS: Google button presence checked (found=True)
+11:58:09 [INFO] PASS: Manual email presence checked (found=True)
+11:58:14 [INFO] PASS: Google Sign-in click executed
+11:59:32 [INFO] PASS: Apple Sign-in click executed
+11:59:46 [INFO] PASS: Navigated to Email input screen

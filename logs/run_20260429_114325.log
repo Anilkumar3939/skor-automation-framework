@@ -1,0 +1,11 @@
+11:44:10 [ERROR] FAIL: Onboarding page not displayed — check screenshot 01
+11:45:16 [INFO] PASS: T&C checkbox not checked initially (state=None)
+11:46:40 [ERROR] FAIL: T&C page did not load correctly
+11:48:20 [ERROR] FAIL: Failed to return to onboarding from T&C
+11:49:35 [ERROR] FAIL: Unexpected navigation — page changed without input
+11:50:45 [ERROR] FAIL: Unexpected full name placeholder: '86217777331'
+11:50:45 [ERROR] FAIL: Unexpected NIK placeholder: ''
+11:50:45 [ERROR] FAIL: Unexpected income placeholder: ''
+11:51:55 [ERROR] FAIL: Full name validation message not displayed
+11:53:14 [ERROR] FAIL: NIK validation message not displayed for short input
+11:54:26 [INFO] PASS: Non-numeric char blocked. Field contains: ''

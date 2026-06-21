@@ -1,0 +1,3 @@
+12:07:31 [ERROR] FAIL: Onboarding page not displayed — check screenshot 01
+12:08:37 [INFO] PASS: T&C checkbox not checked initially (state=None)
+12:10:01 [ERROR] FAIL: T&C page did not load correctly

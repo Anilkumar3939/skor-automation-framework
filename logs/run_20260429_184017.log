@@ -1,0 +1,13 @@
+18:40:44 [INFO] PASS: All splash elements visible (phone field, Continue, invitation code)
+18:40:50 [INFO] PASS: '12345' → rejected (expected)
+18:40:55 [INFO] PASS: '88888888' → rejected (expected)
+18:40:59 [INFO] PASS: '81233422' → rejected (expected)
+18:41:02 [INFO] PASS: '86217777331' → accepted (expected)
+18:41:05 [INFO] PASS: user_settings row exists
+18:41:06 [INFO] PASS: device_details row exists
+18:41:06 [INFO] PASS: location_details row exists
+18:41:06 [INFO] PASS: ADJUST row exists
+18:41:06 [INFO] PASS: FIREBASE row exists
+18:41:06 [ERROR] FAIL: Product mapping missing
+18:41:06 [ERROR] FAIL: Expected ONBOARDING, got: None
+18:41:06 [ERROR] FAIL: State audit records missing

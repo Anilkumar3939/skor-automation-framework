@@ -1,0 +1,5 @@
+14:59:22 [INFO] PASS: OTP screen loaded after valid phone entry
+14:59:33 [INFO] PASS: OTP screen loaded after tapping Continue
+14:59:33 [INFO] PASS: Success toast 'Code successfully sent' is displayed
+14:59:55 [INFO] PASS: Resend Code link is visible
+15:03:03 [INFO] PASS: Error message shown for wrong OTP

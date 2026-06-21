@@ -1,0 +1,4 @@
+17:23:31 [ERROR] FAIL: Some splash elements are missing
+17:25:01 [INFO] PASS: user_settings exists
+17:25:02 [INFO] PASS: device_details exists
+17:25:02 [INFO] PASS: location_details exists

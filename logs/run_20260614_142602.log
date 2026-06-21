@@ -1,0 +1,9 @@
+14:26:12 [INFO] PASS: Already on RegisterLogin screen
+14:26:12 [INFO] PASS: Registration screen loaded
+14:26:13 [INFO] PASS: Continue disabled for empty phone
+14:26:43 [INFO] PASS: Continue disabled for empty phone
+14:26:54 [INFO] PASS: Zero prefix blocked
+14:27:05 [INFO] PASS: Short phone blocked
+14:27:08 [INFO] PASS: Referral section visible
+14:27:22 [INFO] PASS: Flow executed (kept original behavior)
+14:28:16 [ERROR] FAIL: OTP screen not reached

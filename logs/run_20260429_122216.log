@@ -1,0 +1,2 @@
+12:22:41 [INFO] PASS: OTP screen loaded after valid phone entry
+12:23:37 [ERROR] FAIL: No error shown for wrong OTP — check screenshot 03b

@@ -1,0 +1,4 @@
+15:36:59 [INFO] PASS: Bypassed KTP and Liveness
+15:36:59 [INFO] PASS: Navigated to checkpoints
+15:37:01 [INFO] PASS: Clicked continue
+15:37:04 [ERROR] FAIL: Failed to reach delivery page

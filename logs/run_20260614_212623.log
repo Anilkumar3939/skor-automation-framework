@@ -1,0 +1,11 @@
+21:26:34 [INFO] PASS: Already on RegisterLogin screen
+21:26:34 [INFO] PASS: Registration screen loaded
+21:26:37 [INFO] PASS: Continue disabled for empty phone
+21:26:49 [INFO] PASS: Zero prefix blocked
+21:27:00 [INFO] PASS: Short phone blocked
+21:27:03 [INFO] PASS: Referral section visible
+21:27:17 [INFO] PASS: Flow executed (kept original behavior)
+21:27:49 [INFO] PASS: Valid invitation code accepted
+21:28:11 [ERROR] FAIL: OTP screen not reached
+21:28:24 [INFO] PASS: Campaign exists with utm_source referral
+21:28:24 [INFO] PASS: user_settings entry exists

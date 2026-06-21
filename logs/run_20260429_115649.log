@@ -1,0 +1,2 @@
+11:57:12 [INFO] PASS: All splash elements visible (phone field, Continue, invitation code)
+11:57:15 [ERROR] FAIL: Continue button should NOT be enabled with no input

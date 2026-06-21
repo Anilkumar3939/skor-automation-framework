@@ -1,0 +1,3 @@
+12:11:13 [INFO] PASS: OTP screen loaded successfully
+12:11:19 [INFO] PASS: Resend Code link is visible
+12:11:30 [INFO] PASS: Error message shown for wrong OTP

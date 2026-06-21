@@ -1,0 +1,8 @@
+12:10:31 [INFO] PASS: Already on RegisterLogin screen
+12:10:32 [INFO] PASS: Registration screen loaded
+12:10:39 [INFO] PASS: Zero prefix blocked
+12:10:47 [INFO] PASS: Short phone blocked
+12:10:53 [INFO] PASS: Proceed enabled for valid phone
+12:11:00 [INFO] PASS: Referral section visible
+12:11:03 [INFO] PASS: Flow executed (kept original behavior)
+12:11:05 [ERROR] FAIL: Continue not enabled

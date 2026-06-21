@@ -1,0 +1,5 @@
+08:42:27 [INFO] PASS: Already on RegisterLogin screen
+08:42:28 [INFO] PASS: Registration screen loaded
+08:42:32 [ERROR] FAIL: Zero prefix should not be allowed
+08:42:34 [ERROR] FAIL: Short phone should not be allowed
+08:42:36 [INFO] PASS: Proceed enabled for valid phone

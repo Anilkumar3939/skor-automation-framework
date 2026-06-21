@@ -1,0 +1,6 @@
+23:10:42 [INFO] PASS: Verify Email page is visible
+23:10:43 [INFO] PASS: Google button presence checked (found=True)
+23:10:44 [INFO] PASS: Manual email presence checked (found=True)
+23:10:56 [ERROR] FAIL: Did NOT navigate after clicking manual email
+23:11:06 [INFO] PASS: Navigated to verification code screen
+23:12:28 [INFO] PASS: Navigated to Welcome screen after OTP verification

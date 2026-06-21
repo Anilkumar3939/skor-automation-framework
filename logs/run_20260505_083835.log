@@ -1,0 +1,9 @@
+08:39:04 [ERROR] FAIL: Failed to reach RegisterLogin screen
+08:39:04 [ERROR] FAIL: Registration screen not loaded
+08:39:06 [ERROR] FAIL: Proceed should be disabled for empty phone
+08:39:08 [ERROR] FAIL: Zero prefix should not be allowed
+08:39:10 [ERROR] FAIL: Short phone should not be allowed
+08:39:12 [INFO] PASS: Proceed enabled for valid phone
+08:39:16 [INFO] PASS: Error cleared after valid input
+08:39:16 [INFO] PASS: Referral section visible
+08:39:16 [INFO] PASS: Flow executed (kept original behavior)

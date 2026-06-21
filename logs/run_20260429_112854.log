@@ -1,0 +1,14 @@
+11:29:19 [INFO] PASS: All splash elements visible (phone field, Continue, invitation code)
+11:29:21 [ERROR] FAIL: Continue button should NOT be enabled with no input
+11:29:49 [INFO] PASS: '12345' → rejected (expected)
+11:29:54 [INFO] PASS: '88888888' → rejected (expected)
+11:29:59 [INFO] PASS: '81233422' → rejected (expected)
+11:30:01 [INFO] PASS: '86217777331' → accepted (expected)
+11:30:05 [INFO] PASS: user_settings row exists
+11:30:05 [INFO] PASS: device_details row exists
+11:30:05 [INFO] PASS: location_details row exists
+11:30:05 [INFO] PASS: ADJUST row exists
+11:30:05 [INFO] PASS: FIREBASE row exists
+11:30:05 [INFO] PASS: Product mapping (BMI) exists
+11:30:05 [ERROR] FAIL: Expected ONBOARDING, got: MANUAL_VERIFICATION
+11:30:05 [INFO] PASS: State audit records exist

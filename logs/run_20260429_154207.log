@@ -1,0 +1,13 @@
+15:42:55 [ERROR] FAIL: Some splash elements are missing — check screenshot 01b
+15:43:45 [INFO] PASS: '12345' → rejected (expected)
+15:43:49 [INFO] PASS: '88888888' → rejected (expected)
+15:43:54 [INFO] PASS: '81233422' → rejected (expected)
+15:43:57 [INFO] PASS: '86217777331' → accepted (expected)
+15:44:45 [INFO] PASS: user_settings row exists
+15:44:45 [INFO] PASS: device_details row exists
+15:44:45 [INFO] PASS: location_details row exists
+15:44:45 [INFO] PASS: ADJUST row exists
+15:44:45 [INFO] PASS: FIREBASE row exists
+15:44:46 [INFO] PASS: Product mapping (BMI) exists
+15:44:46 [INFO] PASS: State machine = ONBOARDING (got: ONBOARDING)
+15:44:46 [INFO] PASS: State audit records exist

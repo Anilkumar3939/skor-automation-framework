@@ -1,0 +1,19 @@
+16:07:47 [INFO] PASS: Page title 'See your limit in 2 minutes!' visible
+16:07:55 [ERROR] FAIL: Page description not found
+16:08:06 [ERROR] FAIL: Submit button not found
+16:08:54 [INFO] PASS: Full Name field visible
+16:08:54 [INFO] PASS: NIK field visible
+16:08:54 [INFO] PASS: Monthly Income field visible
+16:09:27 [ERROR] FAIL: Submit button should be DISABLED with empty fields
+16:09:55 [INFO] PASS: T&C checkbox is unchecked on fresh form (state=False)
+16:10:24 [INFO] PASS: Terms of Use page opened from T&C link
+16:10:46 [INFO] PASS: Returned to onboarding form after back from T&C
+16:11:12 [ERROR] FAIL: Digit found in 'John2 Doe!'
+16:11:12 [ERROR] FAIL: Special char found in 'John2 Doe!'
+16:12:01 [INFO] PASS: Full Name validation message shown: 'Please enter your full name as stated on your KTP'
+16:12:28 [INFO] PASS: Non-numeric chars blocked — NIK contains: '32012345'
+16:12:55 [INFO] PASS: Leading zero blocked in NIK field (got: '123456789012345')
+16:13:41 [INFO] PASS: NIK validation message shown: 'NIK has to be 16 digits'
+16:14:07 [INFO] PASS: Income field contains value: '5.000.000'
+16:14:48 [INFO] PASS: Submit button is ENABLED with valid full name, NIK, income and T&C checked
+16:15:54 [ERROR] FAIL: Still on onboarding form after submit — API call may have failed. Check screenshot 14b for error toast.

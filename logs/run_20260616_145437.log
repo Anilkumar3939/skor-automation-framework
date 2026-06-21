@@ -1,0 +1,12 @@
+14:54:38 [INFO] PASS: OTP screen loaded successfully
+14:54:42 [INFO] PASS: Resend Code link is visible
+14:54:49 [INFO] PASS: Error message shown for wrong OTP
+14:56:02 [INFO] PASS: OTP accepted — navigated past OTP screen
+14:56:02 [INFO] PASS: OTP marked verified in DB
+14:56:02 [INFO] PASS: Product mapping exists for BMI
+14:56:02 [INFO] PASS: State machine is ONBOARDING (got: ONBOARDING)
+14:56:03 [INFO] PASS: State audit exists for BANK_SELECTION -> ONBOARDING
+15:02:34 [INFO] PASS: OTP screen loaded successfully
+15:02:38 [INFO] PASS: Resend Code link is visible
+15:02:45 [INFO] PASS: Error message shown for wrong OTP
+15:03:56 [INFO] PASS: OTP accepted — navigated past OTP screen

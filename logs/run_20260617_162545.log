@@ -1,0 +1,7 @@
+16:25:51 [INFO] PASS: Continue disabled for empty phone
+16:26:02 [INFO] PASS: Zero prefix blocked
+16:26:13 [INFO] PASS: Short phone blocked
+16:26:16 [INFO] PASS: Referral section visible
+16:26:29 [INFO] PASS: Flow executed (kept original behavior)
+16:27:00 [INFO] PASS: Valid invitation code accepted
+16:27:22 [ERROR] FAIL: OTP screen not reached

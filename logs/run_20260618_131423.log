@@ -1,0 +1,24 @@
+13:14:24 [INFO] PASS: Page title 'See your limit in 2 minutes!' visible
+13:14:25 [INFO] PASS: Full Name field visible
+13:14:25 [INFO] PASS: NIK field visible
+13:14:25 [INFO] PASS: Monthly Income field visible
+13:14:38 [INFO] PASS: Submit button correctly disabled with no input
+13:14:40 [INFO] PASS: T&C checkbox is unchecked on fresh form (state=False)
+13:14:45 [INFO] PASS: Terms of Use page opened from T&C link
+13:14:51 [INFO] PASS: Returned to onboarding form after back from T&C
+13:14:54 [ERROR] FAIL: Digit found in 'John2 Doe!'
+13:14:54 [ERROR] FAIL: Special char found in 'John2 Doe!'
+13:15:20 [INFO] PASS: Full Name validation message shown: 'Please enter your full name as stated on your KTP'
+13:15:25 [INFO] PASS: Non-numeric chars blocked — NIK contains: '32012345'
+13:15:30 [INFO] PASS: Leading zero blocked in NIK field (got: '123456789012345')
+13:15:53 [INFO] PASS: NIK validation message shown: 'NIK has to be 16 digits'
+13:16:05 [INFO] PASS: Income field contains value: '5.000.000'
+13:16:30 [INFO] PASS: Arrived at next screen after onboarding submit
+13:16:31 [INFO] PASS: User acquisition record exists
+13:16:31 [INFO] PASS: KYC details record exists
+13:16:31 [INFO] PASS: KYC status record exists for BMI
+13:16:31 [INFO] PASS: KTP address record exists
+13:16:31 [INFO] PASS: Bureau consent record exists
+13:16:31 [INFO] PASS: Current state is PRE_MANUAL_VERIFICATION (got: PRE_MANUAL_VERIFICATION)
+13:16:31 [INFO] PASS: State audit exists for ONBOARDING -> PRE_MANUAL_VERIFICATION
+13:16:31 [ERROR] FAIL: Missing MSI_SUCCESS credit status

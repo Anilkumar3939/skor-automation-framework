@@ -1,0 +1,6 @@
+15:26:22 [INFO] PASS: OTP screen loaded after valid phone entry
+15:26:32 [INFO] PASS: OTP screen loaded after tapping Continue
+15:26:32 [INFO] PASS: OTP captured from toast: 289792
+15:26:32 [INFO] PASS: Success toast 'Code successfully sent' is displayed
+15:26:32 [INFO] PASS: OTP found: 289792
+15:27:03 [INFO] PASS: OTP accepted — navigated past OTP screen
