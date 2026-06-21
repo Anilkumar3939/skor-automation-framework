@@ -1,6 +1,7 @@
 # Ignore Allure test results and reports
 allure-report/
 allure-results/
+screenshots/
 
 # Ignore standard Node.js dependencies (if applicable)
 node_modules/
