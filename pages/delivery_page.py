@@ -31,6 +31,7 @@ class DeliveryPage():
     def home_delivery_elements_visible(self):
         return (self.driver(descriptionContains="Input your current home address").exists(timeout=3))
     
+    
     def entering_province_city_district_subDistrict(self, locations):
         click_province = self.driver(descriptionContains="Province, City, District, Subdistrict")
 
@@ -47,7 +48,7 @@ class DeliveryPage():
 
             xpath = f'//android.view.View[@content-desc="{loc}"]'
 
-            el = self.driver(xpath)
+            el = self.driver.xpath(xpath)
 
             if el.wait(timeout=3):
                 print(f"Found: {loc}")
@@ -65,11 +66,19 @@ class DeliveryPage():
             homeType.click()
         else:
             raise Exception("Home address type not found")
-        el = self.driver(descriptionContains="Home address")
-        if el.exists(timeout=5):
+        el = self.driver.xpath('//android.widget.ScrollView/android.view.View[8]/android.widget.EditText')
+        if el.exists:
             el.set_text(address)
         else:
             raise Exception("Home address field not found")
+        rt = self.driver.xpath('//android.widget.ScrollView/android.view.View[11]/android.widget.EditText')
+
+        if rt.exists:
+            rt.set_text("001")
+
+        rw = self.driver.xpath('//android.widget.ScrollView/android.view.View[12]/android.widget.EditText')
+        if rw.exists:
+            rw.set_text("001")
         
     def fill_workplace_address(self, type,address,locations):
         self.entering_province_city_district_subDistrict(locations)
@@ -81,8 +90,8 @@ class DeliveryPage():
             raise Exception("Workplace address type not found")
         
 
-        el = self.driver(descriptionContains="Workplace address")
-        if el.exists(timeout=5):
+        el = self.driver.xpath('//android.widget.ScrollView/android.view.View[8]/android.widget.EditText')
+        if el.exists:
             el.set_text(address)
         else:
             raise Exception("Workplace address field not found")
@@ -117,12 +126,9 @@ class DeliveryPage():
 
         self.entering_province_city_district_subDistrict(locations)
 
-        full_address = self.driver(
-            hint="Full Workplace address"
-        )
+        full_address = self.driver.xpath('//android.widget.EditText')
 
-        if full_address.exists(timeout=5):
-            full_address.click()
+        if full_address.exists:
             full_address.set_text(address)
         else:
             raise Exception("Full address field not found")
@@ -130,14 +136,20 @@ class DeliveryPage():
         self.scroll_to_bottom()
         
 
-        rt = self.driver(hint="RT")
+        rt = self.driver.xpath('//android.widget.ScrollView/android.view.View[15]/android.widget.EditText')
 
-        if rt.exists(timeout=3):
+        if rt.exists:
             rt.set_text("001")
+        else:
+            raise Exception("rt not found")
 
-        rw = self.driver(hint="RW")
-        if rw.exists(timeout=3):
+        rw = self.driver.xpath('//android.widget.ScrollView/android.view.View[16]/android.widget.EditText')
+        if rw.exists:
             rw.set_text("001")
+        else:
+            raise Exception("rw not found")
+        self.scroll_to_bottom()
+
 
     def click_submit(self):
         el = self.driver(descriptionContains="Submit")
@@ -173,5 +185,5 @@ class DeliveryPage():
 
     def is_submission_success_page_visible(self):
         return self.driver(
-            descriptionContains="Data Submitted"
+            descriptionContains="your application has been submitted"
         ).exists(timeout=10)

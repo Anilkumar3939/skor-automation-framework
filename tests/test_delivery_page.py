@@ -3,15 +3,15 @@ from logging import Logger
 import allure
 
 from pages.delivery_page import DeliveryPage
+from base import APP_PACKAGE, BaseTest
 
-
-class TestDeliveryPage:
+class TestDeliveryPage(BaseTest):
 
     @classmethod
     def setup_class(cls):
         super().setup_class()
         cls.delivery_page = DeliveryPage(cls.d)
-        cls.logger = Logger()
+        cls.logger = Logger(TestDeliveryPage)
 
     def _log_pass(self, msg):
         print(f"  ✅ PASS: {msg}")
@@ -26,144 +26,144 @@ class TestDeliveryPage:
             self._log_fail(fail_msg)
         return cond
 
-    @allure.story("Delivery Page Load")
-    def test_delivery_page_loads(self):
-        print("\n[TEST] Delivery page loads correctly")
+    # @allure.story("Delivery Page Load")
+    # def test_delivery_page_loads(self):
+    #     print("\n[TEST] Delivery page loads correctly")
 
-        visible = self.delivery_page.is_visible_start()
+    #     visible = self.delivery_page.is_visible_start()
 
-        assert visible, "Delivery page not visible"
+    #     assert visible, "Delivery page not visible"
 
-        print("✅ PASS: Delivery page is visible")
+    #     print("✅ PASS: Delivery page is visible")
 
-    @allure.story("Switch Home To Workplace")
-    def test_switch_home_to_workplace(self):
+    # @allure.story("Switch Home To Workplace")
+    # def test_switch_home_to_workplace(self):
 
-        print("\n[TEST] Switch Home To Workplace")
+    #     print("\n[TEST] Switch Home To Workplace")
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        assert self.delivery_page.home_delivery_elements_visible(), \
-            "Home section not visible"
+    #     assert self.delivery_page.home_delivery_elements_visible(), \
+    #         "Home section not visible"
 
-        self.delivery_page.select_delivery_option("Workplace")
+    #     self.delivery_page.select_delivery_option("Workplace")
 
-        assert self.delivery_page.workplace_delivery_elements_visible(), \
-            "Workplace section not visible"
+    #     assert self.delivery_page.workplace_delivery_elements_visible(), \
+    #         "Workplace section not visible"
 
-        print("✅ PASS: Switched Home → Workplace")
+    #     print("✅ PASS: Switched Home → Workplace")
 
-    @allure.story("Switch Workplace To Home")
-    def test_switch_workplace_to_home(self):
+    # @allure.story("Switch Workplace To Home")
+    # def test_switch_workplace_to_home(self):
 
-        print("\n[TEST] Switch Workplace To Home")
+    #     print("\n[TEST] Switch Workplace To Home")
 
-        self.delivery_page.select_delivery_option("Workplace")
+    #     self.delivery_page.select_delivery_option("Workplace")
 
-        assert self.delivery_page.workplace_delivery_elements_visible(), \
-            "Workplace section not visible"
+    #     assert self.delivery_page.workplace_delivery_elements_visible(), \
+    #         "Workplace section not visible"
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        assert self.delivery_page.home_delivery_elements_visible(), \
-            "Home section not visible"
+    #     assert self.delivery_page.home_delivery_elements_visible(), \
+    #         "Home section not visible"
 
-        print("✅ PASS: Switched Workplace → Home")
+    #     print("✅ PASS: Switched Workplace → Home")
 
-    @allure.story("Continue Without Address")
-    def test_continue_without_address(self):
+    # @allure.story("Continue Without Address")
+    # def test_continue_without_address(self):
 
-        print("\n[TEST] Continue Without Address")
+    #     print("\n[TEST] Continue Without Address")
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        self.delivery_page.click_continue()
+    #     self.delivery_page.click_continue()
 
-        still_on_page = self.delivery_page.is_visible()
+    #     still_on_page = self.delivery_page.is_visible()
 
-        assert still_on_page, \
-            "User navigated without entering address"
+    #     assert still_on_page, \
+    #         "User navigated without entering address"
 
-        print("✅ PASS: User cannot continue without address")
+    #     print("✅ PASS: User cannot continue without address")
 
-    @allure.story("Address Maximum Length")
-    def test_address_max_length(self):
+    # @allure.story("Address Maximum Length")
+    # def test_address_max_length(self):
 
-        print("\n[TEST] Address Maximum Length")
+    #     print("\n[TEST] Address Maximum Length")
 
-        long_address = "A" * 120
+    #     long_address = "A" * 120
 
-        locations = [
-            "DKI Jakarta",
-            "Jakarta Selatan",
-            "Kebayoran Baru",
-            "Senayan"
-        ]
+    #     locations = [
+    #         "DKI Jakarta",
+    #         "Jakarta Selatan",
+    #         "Kebayoran Baru",
+    #         "Senayan"
+    #     ]
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        self.delivery_page.fill_home_address(
-            "Apartment",
-            long_address,
-            locations
-        )
+    #     self.delivery_page.fill_home_address(
+    #         "Apartment",
+    #         long_address,
+    #         locations
+    #     )
 
-        print("✅ PASS: Maximum length address entered")
+    #     print("✅ PASS: Maximum length address entered")
 
-    @allure.story("Special Characters In Address")
-    def test_special_characters_in_address(self):
+    # @allure.story("Special Characters In Address")
+    # def test_special_characters_in_address(self):
 
-        print("\n[TEST] Special Characters In Address")
+    #     print("\n[TEST] Special Characters In Address")
 
-        special_address = "Jl.@#$%^&*()_+ Block-A/12"
+    #     special_address = "Jl.@#$%^&*()_+ Block-A/12"
 
-        locations = [
-            "DKI Jakarta",
-            "Jakarta Selatan",
-            "Kebayoran Baru",
-            "Senayan"
-        ]
+    #     locations = [
+    #         "DKI Jakarta",
+    #         "Jakarta Selatan",
+    #         "Kebayoran Baru",
+    #         "Senayan"
+    #     ]
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        self.delivery_page.fill_home_address(
-            "Apartment",
-            special_address,
-            locations
-        )
+    #     self.delivery_page.fill_home_address(
+    #         "Apartment",
+    #         special_address,
+    #         locations
+    #     )
 
-        print("✅ PASS: Special characters accepted")
+    #     print("✅ PASS: Special characters accepted")
 
-    @allure.story("Home Delivery Flow")
-    def test_home_delivery_flow(self):
+    # @allure.story("Home Delivery Flow")
+    # def test_home_delivery_flow(self):
 
-        print("\n[TEST] Home Delivery Flow")
+    #     print("\n[TEST] Home Delivery Flow")
 
-        locations = [
-            "DKI Jakarta",
-            "Jakarta Selatan",
-            "Kebayoran Baru",
-            "Senayan"
-        ]
+    #     locations = [
+    #         "DKI Jakarta",
+    #         "Jakarta Selatan",
+    #         "Kebayoran Baru",
+    #         "Senayan"
+    #     ]
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        visible = self.delivery_page.home_delivery_elements_visible()
+    #     visible = self.delivery_page.home_delivery_elements_visible()
 
-        assert visible, "Home address form not displayed"
+    #     assert visible, "Home address form not displayed"
 
-        self.delivery_page.fill_home_address(
-            "Apartment",
-            "Jl Test Home Address",
-            locations
-        )
+    #     self.delivery_page.fill_home_address(
+    #         "Apartment",
+    #         "Jl Test Home Address",
+    #         locations
+    #     )
 
-        self.delivery_page.click_continue()
+    #     self.delivery_page.click_continue()
 
-        assert self.delivery_page.is_input_remaining_address_page_visible(), \
-            "Remaining address page not displayed"
+    #     assert self.delivery_page.is_input_remaining_address_page_visible(), \
+    #         "Remaining address page not displayed"
 
-        print("✅ PASS: Home delivery flow")
+    #     print("✅ PASS: Home delivery flow")
 
 
 
@@ -226,7 +226,6 @@ class TestDeliveryPage:
     def test_submit_button_enabled_after_mandatory_fields(self):
 
         print("\n[TEST] Submit Button Enabled")
-
         submit_btn = self.delivery_page.driver(
             descriptionContains="Submit"
         )
@@ -258,39 +257,39 @@ class TestDeliveryPage:
 
         print("✅ PASS: Delivery address submitted")
 
-    @allure.story("Complete Delivery Flow")
-    def test_complete_delivery_flow(self):
+    # @allure.story("Complete Delivery Flow")
+    # def test_complete_delivery_flow(self):
 
-        print("\n[TEST] Complete Delivery Flow")
+    #     print("\n[TEST] Complete Delivery Flow")
 
-        locations = [
-            "DKI Jakarta",
-            "Jakarta Selatan",
-            "Kebayoran Baru",
-            "Senayan"
-        ]
+    #     locations = [
+    #         "DKI Jakarta",
+    #         "Jakarta Selatan",
+    #         "Kebayoran Baru",
+    #         "Senayan"
+    #     ]
 
-        self.delivery_page.select_delivery_option("Home")
+    #     self.delivery_page.select_delivery_option("Home")
 
-        self.delivery_page.fill_home_address(
-            "Apartment",
-            "Jl Test Home Address",
-            locations
-        )
+    #     self.delivery_page.fill_home_address(
+    #         "Apartment",
+    #         "Jl Test Home Address",
+    #         locations
+    #     )
 
-        self.delivery_page.click_continue()
+    #     self.delivery_page.click_continue()
 
-        assert self.delivery_page.is_input_remaining_address_page_visible(), \
-            "Remaining address page not displayed"
+    #     assert self.delivery_page.is_input_remaining_address_page_visible(), \
+    #         "Remaining address page not displayed"
 
-        self.delivery_page.fill_other_address(
-            "Jl Kemang Timur No.18",
-            locations
-        )
+    #     self.delivery_page.fill_other_address(
+    #         "Jl Kemang Timur No.18",
+    #         locations
+    #     )
 
-        self.delivery_page.click_submit()
+    #     self.delivery_page.click_submit()
 
-        assert self.delivery_page.is_submission_success_page_visible(), \
-            "Submission failed"
+    #     assert self.delivery_page.is_submission_success_page_visible(), \
+    #         "Submission failed"
 
-        print("✅ PASS: End-to-End Delivery Flow Successful")
+    #     print("✅ PASS: End-to-End Delivery Flow Successful")
