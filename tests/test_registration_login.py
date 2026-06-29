@@ -13,7 +13,7 @@ from pages.registartion_login import RegistrationLogin
 
 
 
-VALID_PHONE = os.environ.get("TEST_PHONE", "845682161998")
+VALID_PHONE = os.environ.get("TEST_PHONE", "8456808698")
 SHORT_PHONE = "81234"
 ZERO_PHONE  = "0010080019"
 VALID_CODE  = os.environ.get("TEST_REFERRAL_CODE", "OBRSPC9")

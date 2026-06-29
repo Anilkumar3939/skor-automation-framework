@@ -174,7 +174,7 @@ class TestDeliveryPage(BaseTest):
 
         visible = self.delivery_page.is_input_remaining_address_page_visible()
 
-        assert visible, "Remaining address page not visible"
+        self.assert_critical(visible, "Remaining address page failed to load. Stopping suite.")
 
         print("✅ PASS: Remaining address page visible")
 

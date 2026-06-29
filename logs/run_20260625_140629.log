@@ -1,0 +1,5 @@
+14:06:32 [INFO] PASS: Registration screen loaded
+14:06:35 [INFO] PASS: Continue disabled for empty phone
+14:06:46 [INFO] PASS: Zero prefix blocked
+14:06:57 [INFO] PASS: Short phone blocked
+14:07:00 [INFO] PASS: Referral section visible

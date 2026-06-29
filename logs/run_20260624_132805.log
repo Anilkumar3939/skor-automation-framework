@@ -1,0 +1,4 @@
+13:29:26 [ERROR] SELECT * FROM "SC_UW_USER_TARAN" WHERE user_id=None and decision=None and stage=None --> Failed
+13:29:26 [ERROR] SELECT * FROM "SC_UW_USER" WHERE user_id=None and bank=None and status = None --> Failed
+13:29:26 [ERROR] SELECT * FROM "SC_STATE_MACHINE" WHERE user_id=None and state=None --> Failed
+13:29:26 [ERROR] SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id=None and previous_state=None and current_state=None --> Failed

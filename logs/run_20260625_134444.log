@@ -1,0 +1,11 @@
+13:46:01 [INFO] PASS: Full Name field visible
+13:46:01 [INFO] PASS: NIK field visible
+13:46:01 [INFO] PASS: Monthly Income field visible
+13:46:49 [ERROR] FAIL: Submit button should be DISABLED with empty fields
+13:46:57 [INFO] PASS: T&C checkbox is unchecked on fresh form (state=None)
+13:47:50 [ERROR] FAIL: Terms of Use page did not load — check screenshot 05b
+13:49:20 [INFO] PASS: Numeric chars blocked in Full Name field
+13:49:20 [INFO] PASS: Special chars blocked in Full Name field
+13:51:11 [ERROR] FAIL: Full Name validation message not displayed for empty name
+13:51:37 [INFO] PASS: Non-numeric chars blocked — NIK contains: ''
+13:52:04 [INFO] PASS: Leading zero blocked in NIK field (got: '')

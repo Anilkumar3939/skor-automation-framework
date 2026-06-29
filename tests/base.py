@@ -30,14 +30,20 @@ class BaseTest:
     # ------------------------------------------------------------------ #
     _data = {}
 
+    _initialized = False
+
     @classmethod
     def setup_class(cls):
         """Connect to the device.  Called once per class by pytest and by run_tests.py."""
+        if cls._initialized:
+            return
+
         print(f"\nConnecting to device for {cls.__name__}...")
         cls.d = u2.connect()
         cls.d.implicitly_wait(10)
         info = cls.d.device_info
         print(f"Connected: {info.get('brand')} {info.get('model')}")
+        cls._initialized = True
 
     @classmethod
     def teardown_class(cls):
@@ -132,6 +138,13 @@ class BaseTest:
         else:
             print(f"  ❌ FAIL: '{label}' should NOT be visible — {msg}")
         return not exists
+
+    def assert_critical(self, condition, msg):
+        """If condition is False, raise an exception to halt the entire suite."""
+        if not condition:
+            self.screenshot("CRITICAL_FAILURE")
+            raise Exception(f"CRITICAL FAILURE: {msg}")
+        return True
 
     # ------------------------------------------------------------------ #
     #  App lifecycle

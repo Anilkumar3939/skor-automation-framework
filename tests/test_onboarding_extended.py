@@ -82,53 +82,50 @@ class TestExtendedOnboarding(BaseTest):
         return condition
 
 
-    # @allure.story("01a - Job Information Page")
-    # def test_01a_job_information_page(self):
-    #     print("\n[TEST 01a] Job Information functionality")
+    @allure.story("01a - Job Information Page")
+    def test_01a_job_information_page(self):
+        print("\n[TEST 01a] Job Information functionality")
 
-    #     assert self.job_info.is_visible(timeout=5), \
-    #         "❌ Job Information page NOT visible"
+        self.assert_critical(self.job_info.is_visible(timeout=5), "Job Information page failed to load. Stopping suite.")
 
-    #     self.screenshot("01a1_job_info_page")
+        self.screenshot("01a1_job_info_page")
 
-    #     print("  ℹ️  Filling job information with test data...")
-    #     self.job_info.fill_job_information()
+        print("  ℹ️  Filling job information with test data...")
+        self.job_info.fill_job_information()
 
-    #     print("  ℹ️  Job information filled.")
-    #     self.screenshot("01a2_job_info_filled")
-    #     time.sleep(3)
-    #     self._assert(True, "Job information filled successfully", "Failed to fill job information")     
+        print("  ℹ️  Job information filled.")
+        self.screenshot("01a2_job_info_filled")
+        time.sleep(3)
+        self._assert(True, "Job information filled successfully", "Failed to fill job information")     
 
-    # @allure.story("01b - Company Details Page")
-    # def test_01b_company_details_page(self):
-    #     print("\n[TEST 01b] Company Details functionality")
+    @allure.story("01b - Company Details Page")
+    def test_01b_company_details_page(self):
+        print("\n[TEST 01b] Company Details functionality")
 
-    #     assert self.company_details.is_visible(timeout=5), \
-    #         "❌ Company Details page NOT visible"
+        self.assert_critical(self.company_details.is_visible(timeout=5), "Company Details page failed to load. Stopping suite.")
 
-    #     self.screenshot("01b1_company_details_page")
+        self.screenshot("01b1_company_details_page")
 
-    #     self.company_details.fill_company_details()
+        self.company_details.fill_company_details()
 
-    #     self.screenshot("01b2_company_details_filled")
-    #     time.sleep(3)
-    #     clicked = self.company_address.click_continue()
-    #     assert clicked, "❌ Could not submit company address details"
+        self.screenshot("01b2_company_details_filled")
+        time.sleep(3)
+        clicked = self.company_address.click_continue()
+        assert clicked, "❌ Could not submit company address details"
 
-    # @allure.story("02 - Reference Contacts Page")
-    # def test_02_reference_contacts(self):
-    #     print("\n[TEST 02] Reference Contacts functionality")
-    #     if not self.reference_contacts.is_visible(timeout=3):
-    #         print("  ℹ️  SKIP: Reference Contacts page not visible.")
-    #         return
+    @allure.story("02 - Reference Contacts Page")
+    def test_02_reference_contacts(self):
+        print("\n[TEST 02] Reference Contacts functionality")
+        if not self.reference_contacts.is_visible(timeout=3):
+            print("  ℹ️  SKIP: Reference Contacts page not visible.")
+            return
 
-    #     self.screenshot("02a_reference_contacts")
-    #     self.reference_contacts.fill_details()
-    #     self.reference_contacts.fill_relationship()
-    #     self.screenshot("02b_reference_contacts_filled")
-    #     user_id = 'SC062026000099'
-    #     clicked = self.reference_contacts.click_continue()
-    #     self._assert(clicked, "Submitted Reference Contacts", "Could not submit Reference Contacts")
+        self.screenshot("02a_reference_contacts")
+        self.reference_contacts.fill_details()
+        self.reference_contacts.fill_relationship()
+        self.screenshot("02b_reference_contacts_filled")
+        clicked = self.reference_contacts.click_continue()
+        self._assert(clicked, "Submitted Reference Contacts", "Could not submit Reference Contacts")
 
     @allure.story("03 - BYPASS KTP and Liveness")
     def test_03_bypass_ktp_and_liveness(self):

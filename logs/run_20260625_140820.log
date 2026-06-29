@@ -1,0 +1,5 @@
+14:09:40 [INFO] PASS: Full Name field visible
+14:09:40 [INFO] PASS: NIK field visible
+14:09:40 [INFO] PASS: Monthly Income field visible
+14:10:28 [ERROR] FAIL: Submit button should be DISABLED with empty fields
+14:10:36 [INFO] PASS: T&C checkbox is unchecked on fresh form (state=None)

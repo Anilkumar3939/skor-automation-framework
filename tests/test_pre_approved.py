@@ -28,6 +28,7 @@ for _p in [_ROOT, os.path.join(_ROOT, "tests")]:
 from base import BaseTest
 from pages.preapproved_page import PreApprovedPage
 from utils.logger import get_logger
+from utils.db_helper import DBHelper
 
 
 @allure.feature("Pre-Approved Limit Page")
@@ -38,6 +39,7 @@ class TestPreApprovedLimit(BaseTest):
         super().setup_class()
         cls.page = PreApprovedPage(cls.d)
         cls.logger = get_logger("preapproved")
+        cls.db = DBHelper()
 
     # ───────────────────────────────────────────────
     # HELPERS
@@ -74,11 +76,7 @@ class TestPreApprovedLimit(BaseTest):
         print("\n[TEST 01] Pre-approved limit page loads correctly")
         self._ensure_on_page()
         visible = self.page.is_displayed()
-        self._assert(
-            visible,
-            "Pre-approved limit page is visible",
-            "Pre-approved page not visible"
-        )
+        self.assert_critical(visible, "Pre-approved limit page failed to load. Stopping suite.")
 
     # ══════════════════════════════════════════════
     # TEST 02 — Continue button visible
@@ -209,13 +207,85 @@ class TestPreApprovedLimit(BaseTest):
             "Confetti animation not found"
         )
 
-    # ══════════════════════════════════════════════
-    # TEST 09 — Continue navigates to Create PIN
+
+     # ══════════════════════════════════════════════
+    # TEST 09 — DB Validations in pre-underwriting approved page
     # ══════════════════════════════════════════════
 
-    @allure.story("09 - Continue Navigation")
+    @allure.story("09 - DB Validations in pre-underwriting approved page")
+    def test_09_db_validations(self):
+        print("\n[TEST 09] DB Validations in pre-underwriting approved page")
+        from utils.queries import (
+            get_uw_user_taran,
+            get_sc_uw_user,
+            get_state_audit,
+            get_state,
+            get_msi_success_status
+        )
+        user_id = self._data.get("user_id")
+        result1 = get_uw_user_taran(self.db, user_id, 'PRE_UNDERWRITING')
+
+        if result1:
+            decision = result1[0].get("decision")
+            stage = result1[0].get("stage")
+        else:
+            decision = None
+            stage = None
+        self._assert(
+            decision == "SOFT_APPROVED" and stage == "FINISHED",
+            f'SELECT * FROM "SC_UW_USER_TARAN" WHERE user_id={user_id} and decision={decision} and stage={stage} --> Passed',
+            f'SELECT * FROM "SC_UW_USER_TARAN" WHERE user_id={user_id} and decision={decision} and stage={stage} --> Failed'
+        )
+
+
+        result2 = get_sc_uw_user(self.db, user_id)
+        if result2:
+            bank = result2[0].get("bank")
+            status = result2[0].get("status")
+        else:
+            bank = None
+            status = None
+        self._assert(
+            bank == "BMI" and status == "SOFT_APPROVED",
+            f'SELECT * FROM "SC_UW_USER" WHERE user_id={user_id} and bank={bank} and status = {status} --> Passed',
+            f'SELECT * FROM "SC_UW_USER" WHERE user_id={user_id} and bank={bank} and status = {status} --> Failed'
+        )
+
+        result3 = get_state(self.db, user_id)
+        if result3:
+            state = result3[0].get("state")
+        else:
+            state = None
+        self._assert(
+            state == "PRE_UW_APPROVED",
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Failed'
+        )
+
+        result4 = get_state_audit(self.db, user_id)
+        if result4:
+            previous_state = result4[0].get("previous_state")
+            current_state = result4[0].get("current_state")
+        else:
+            previous_state = None
+            current_state = None
+        self._assert(
+            previous_state == "PRE_UW_APPROVED" and current_state == "PRE_MANUAL_VERIFICATION",
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Failed'
+        )
+
+
+
+
+
+    # ══════════════════════════════════════════════
+    # TEST 10 — Continue navigates to Email Page
+    # ══════════════════════════════════════════════
+
+    @allure.story("10 - Continue Navigation")
     def test_09_continue_navigates(self):
-        print("\n[TEST 09] Clicking Continue navigates to next screen")
+        print("\n[TEST 10] Clicking Continue navigates to next screen")
         self._ensure_on_page()
 
         self.page.click_continue()
@@ -227,6 +297,45 @@ class TestPreApprovedLimit(BaseTest):
             "Navigated away after clicking Continue",
             "Still on same page after Continue"
         )
+
+
+        from utils.queries import get_user_settings,get_state,get_state_audit
+        user_id = self._data.get("user_id")
+        result1 = get_user_settings(self.db, user_id)
+        if result1:
+            pre_uw_accepted = result1[0].get("pre_uw_accepted")
+        else:
+            pre_uw_accepted = None
+        self._assert(
+            pre_uw_accepted,
+            "Pre UW accepted",
+            "Pre UW not accepted"
+        )
+
+        result2 = get_state(self.db, user_id)
+        if result2:
+            state = result2[0].get("state")
+        else:
+            state = None
+        self._assert(
+            state == "EMAIL",
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Failed'
+        )
+
+        result3 = get_state_audit(self.db, user_id)
+        if result3:
+            previous_state = result3[0].get("previous_state")
+            current_state = result3[0].get("current_state")
+        else:
+            previous_state = None
+            current_state = None
+        self._assert(
+            previous_state == "PRE_UW_APPROVED" and current_state == "EMAIL",
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Failed'
+        )
+
 
 
 # ───────────────────────────────────────────────
@@ -242,7 +351,8 @@ TEST_ORDER = [
     "test_06_secure_chip",
     "test_07_privacy_chip",
     "test_08_confetti",
-    "test_09_continue_navigates"
+    "test_09_db_validations",
+    "test_10_continue_navigates"
 ]
 
 

@@ -71,9 +71,12 @@ LIMIT 1;
 """
 
 GET_UW_USER_TARAN = """
-SELECT * FROM "SC_UW_USER_TARAN" WHERE user_id = %s;
+SELECT * FROM "SC_UW_USER_TARAN" WHERE user_id = %s and uw_type = %s;
 """
 
+GET_UW_USER = """
+SELECT * FROM "SC_UW_USER" WHERE user_id = %s;
+"""
 
 # ---------------------------------------------------------------------------
 # State Machine Queries
@@ -145,12 +148,6 @@ WHERE user_id = %s
 # Pre Underwriting Queries
 # ---------------------------------------------------------------------------
 
-GET_PRE_UNDERWRITING_TARAN = """
-SELECT *
-FROM "SC_UW_USER_TARAN"
-WHERE user_id = %s
-  AND uw_type = 'PRE_UNDERWRITING';
-"""
 
 GET_MSI_SUCCESS_STATUS = """
 SELECT *
@@ -160,13 +157,6 @@ WHERE user_id = %s
   AND bank = 'BMI';
 """
 
-GET_SOFT_APPROVED_TARAN = """
-SELECT *
-FROM "SC_UW_USER_TARAN"
-WHERE user_id = %s
-  AND decision = 'SOFT_APPROVED'
-  AND stage = 'FINISHED';
-"""
 
 UPDATE_LIMIT_AND_CARD_TYPE = """
 
@@ -177,14 +167,6 @@ WHERE user_id = %s
 """
 
 
-
-GET_SOFT_APPROVED_USER = """
-SELECT *
-FROM "SC_UW_USER"
-WHERE user_id = %s
-  AND bank = 'BMI'
-  AND status = 'SOFT_APPROVED';
-"""
 
 INSERT_SC_USER_KTP_ADDRESS = """
 INSERT INTO "SC_USER_ADDRESS"
@@ -253,6 +235,11 @@ INSERT_KYC_FACEMATCH_TRANS = """
 insert into "SC_KYC_FACEMATCH_TRANS" (user_id,partner_request_id, image_path,status,facematch_type,liveness_type) values (%s,gen_random_uuid(),'2026/06/15/SC062026000093_ba04b057-6e53-4374-a7d0-3c3677296f5b.jpg', 'PENDING','ON_BOARDING', 'IPROOV')
 """
 
+GET_USER_SSO_AUDIT = """
+select * from "SC_USER_SSO_AUDIT" where user_id = %s;
+"""
+
+
 
 
 
@@ -314,8 +301,14 @@ def get_campaign(db, user_id):
 def get_referral(db, user_id):
     return db.execute_query(GET_REFERRAL, (user_id,))
 
-def get_uw_user_taran(db, user_id):
-    return db.execute_query(GET_UW_USER_TARAN, (user_id,))
+def get_uw_user_taran(db, user_id, uw_type):
+    return db.execute_query(GET_UW_USER_TARAN, (user_id, uw_type))
+
+def get_sc_uw_user(db,user_id):
+    return db.execute_query(GET_UW_USER, (user_id,))
+
+def get_user_sso_audit(db, user_id):
+    return db.execute_query(GET_USER_SSO_AUDIT, (user_id,))
 
 
 # ---------------------------------------------------------------------------
@@ -350,20 +343,9 @@ def get_bureau_consent(db, user_id):
     return db.execute_query(GET_BUREAU_CONSENT, (user_id,))
 
 
-def get_pre_underwriting_taran(db, user_id):
-    return db.execute_query(GET_PRE_UNDERWRITING_TARAN, (user_id,))
-
-
 def get_msi_success_status(db, user_id):
     return db.execute_query(GET_MSI_SUCCESS_STATUS, (user_id,))
 
-
-def get_soft_approved_taran(db, user_id):
-    return db.execute_query(GET_SOFT_APPROVED_TARAN, (user_id,))
-
-
-def get_soft_approved_user(db, user_id):
-    return db.execute_query(GET_SOFT_APPROVED_USER, (user_id,))
 
 def update_limit_and_card_type(db, user_id, credit_limit, product_type):
     return db.execute_query(UPDATE_LIMIT_AND_CARD_TYPE, (credit_limit, product_type, user_id))

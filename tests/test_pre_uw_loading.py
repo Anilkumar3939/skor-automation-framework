@@ -161,11 +161,7 @@ class UWLoadingTest(BaseTest):
         reached = self._navigate_to_uw_loading_once()
         self.screenshot("01_screen")
 
-        assert self._assert(
-            reached,
-            "UW Loading screen is visible",
-            "UW Loading screen NOT visible",
-        )
+        self.assert_critical(reached, "UW Loading screen failed to load. Stopping suite.")
 
     # ════════════════════════════════════════
     # TEST 02 — Progress bar visible
@@ -264,7 +260,7 @@ class UWLoadingTest(BaseTest):
         user_id = self._data.get("user_id")
         print(f"User ID: {user_id}")
 
-        application_id = get_uw_user_taran(self.db, user_id)[0].get("application_id")
+        application_id = get_uw_user_taran(self.db, user_id,'PRE_UNDERWRITING')[0].get("application_id")
         print(application_id)
 
         if application_id:

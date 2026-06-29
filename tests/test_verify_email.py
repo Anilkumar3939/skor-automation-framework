@@ -32,6 +32,7 @@ from base import BaseTest
 from pages.verify_email_page import VerifyEmailPage
 from utils.logger import get_logger
 from tests.test_otp import OTPPage, OTPScreenTest
+from utils.db_helper import DBHelper
 OTPScreenTest.__test__ = False
 
 @allure.feature("Onboarding — Verify Email")
@@ -43,6 +44,8 @@ class TestVerifyEmail(BaseTest):
         super().setup_class()
         cls.verify = VerifyEmailPage(cls.d)
         cls.logger = get_logger("verify_email")
+        cls.db = DBHelper()
+        
 
     # ── helpers ─────────────────────────────────────────
 
@@ -95,12 +98,7 @@ class TestVerifyEmail(BaseTest):
         self.screenshot("01_verify_email")
 
         visible = self.verify.is_displayed()
-
-        self._assert(
-            visible,
-            "Verify Email page is visible",
-            "Verify Email page NOT visible"
-        )
+        self.assert_critical(visible, "Verify Email page failed to load. Stopping suite.")
 
     # ═════════════════════════════════════════════════════
     # TEST 02 — Google button visible (if enabled)
@@ -297,6 +295,51 @@ class TestVerifyEmail(BaseTest):
                 "Navigated to Welcome screen after OTP verification",
                 "Did NOT navigate after OTP verification"
             )
+    
+    @allure.story("10 - DB Validations in EMAIL")
+    def test_10_db_validations(self):
+        print("\n[TEST 10] DB Validations in EMAIL")
+        from utils.queries import (
+            get_user_sso_audit,
+            get_state,
+            get_state_audit
+        )
+
+        user_id = self._data.get("user_id")
+        result1 = get_user_sso_audit(self.db, user_id)
+        if result1:
+            email_verified = result1[0].get("email_verified")
+        else:
+            email_verified = None
+        self._assert(
+            email_verified,
+            "Email Verified",
+            "Email not verified"
+        )
+
+        result2 = get_state(self.db, user_id)
+        if result2:
+            state = result2[0].get("state")
+        else:
+            state = None
+        self._assert(
+            state == "JOB",
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE" WHERE user_id={user_id} and state={state} --> Failed'
+        )
+
+        result3 = get_state_audit(self.db, user_id)
+        if result3:
+            previous_state = result3[0].get("previous_state")
+            current_state = result3[0].get("current_state")
+        else:
+            previous_state = None
+            current_state = None
+        self._assert(
+            previous_state == "EMAIL" and current_state == "JOB",
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Passed',
+            f'SELECT * FROM "SC_STATE_MACHINE_AUDIT" WHERE user_id={user_id} and previous_state={previous_state} and current_state={current_state} --> Failed'
+        )
 
 
 # ── Execution Order ─────────────────────────

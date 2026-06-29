@@ -26,7 +26,7 @@ With Allure HTML report (requires: pip3 install allure-pytest + allure CLI):
     allure serve allure-results
 
 Environment variable overrides:
-    TEST_PHONE=8812345678      python3 run_tests.py
+    TEST_PHONE=8812345600      python3 run_tests.py
     DB_PASS=secret             python3 run_tests.py --suite register_flow
     TEST_PASSCODE=112233       python3 run_tests.py
 """

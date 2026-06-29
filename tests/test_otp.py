@@ -158,8 +158,7 @@ class OTPScreenTest(BaseTest):
         print("\n[TEST 01] Full flow: valid phone + Continue → OTP screen loads")
         reached = self._navigate_to_otp()
         self.screenshot("01_otp_screen")
-        assert self._assert(reached, "OTP screen loaded successfully",
-                            "OTP screen did NOT load — check screenshot 01")
+        self.assert_critical(reached, "OTP screen failed to load. Stopping suite.")
 
     # ── TEST 02 — Resend Code link is visible ───────────────────────────────
 
